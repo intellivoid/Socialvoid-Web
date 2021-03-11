@@ -1,11 +1,14 @@
-<?PHP
-    use DynamicalWeb\DynamicalWeb;
-    use DynamicalWeb\HTML;
-    use Example\ExampleLibrary;
-?>
 <footer class="footer">
-    <div class="container">
-        <span class="text-muted"><?PHP HTML::print(TEXT_FOOTER_TEXT); ?></span>
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                2020 © Xoric.
+            </div>
+            <div class="col-sm-6">
+                <div class="text-sm-right d-none d-sm-block">
+                    Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign
+                </div>
+            </div>
+        </div>
     </div>
 </footer>
