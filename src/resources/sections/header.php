@@ -13,13 +13,13 @@
 
     if(darkModeEnabled())
     {
-        HTML::print("<link href=\"/assets/css/bootstrap-dark.min.css\" rel=\"stylesheet\" type=\"text/css\"/>", false);
-        HTML::print("<link href=\"/assets/css/app-dark.min.css\" rel=\"stylesheet\" type=\"text/css\" />", false);
+        HTML::print("<link href=\"/assets/css/bootstrap-dark.css\" rel=\"stylesheet\" type=\"text/css\"/>", false);
+        HTML::print("<link href=\"/assets/css/app-dark.css\" rel=\"stylesheet\" type=\"text/css\" />", false);
     }
     else
     {
-        HTML::print("<link href=\"/assets/css/bootstrap.min.css\" rel=\"stylesheet\" type=\"text/css\"/>", false);
-        HTML::print("<link href=\"/assets/css/app.min.css\" rel=\"stylesheet\" type=\"text/css\" />", false);
+        HTML::print("<link href=\"/assets/css/bootstrap.css\" rel=\"stylesheet\" type=\"text/css\"/>", false);
+        HTML::print("<link href=\"/assets/css/app.css\" rel=\"stylesheet\" type=\"text/css\" />", false);
     }
 
 ?>
