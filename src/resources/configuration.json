@@ -3,7 +3,7 @@
         "primary_language": "en",
         "debugging_mode": true,
         "enable_ppm": true,
-        "buffer_output": true,
+        "buffer_output": false,
         "compression": {
             "compress_html": true,
             "compress_javascript": true,
@@ -12,12 +12,31 @@
         "favicon": "/assets/images/favicon.ico"
     },
     "router": [
-        {"method": ["GET"], "path": "/", "page": "index", "params": []}
+        {"method": ["GET"], "path": "/", "page": "index", "params": []},
+
+        {"method": ["GET"], "path": "/user/avatar", "page": "user/avatar", "params": []},
+
+        {"method": ["GET", "POST"], "path": "/auth/logout", "page": "authentication/logout", "params": []},
+        {"method": ["GET", "POST"], "path": "/auth/login", "page": "authentication/login", "params": []}
     ],
-    "libraries": {},
+    "libraries": {
+        "SecuredWebSessions": {
+            "directory_name": "sws",
+            "autoloader": "sws.php",
+            "check_class_exists": true,
+            "namespace": "sws",
+            "main_class": "sws"
+        },
+        "SocialvoidLib": {
+            "package_name": "net.intellivoid.socialvoidlib",
+            "version": "latest",
+            "import_dependencies": true,
+            "throw_error": true
+        }
+    },
     "runtime_scripts": {
         "initialize": [],
-        "on_page_load": ["interface_manager.php"],
+        "on_page_load": ["interface_manager.php", "auth_check.php"],
         "page_loaded": [],
         "after_request": [],
         "on_request": [],

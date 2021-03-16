@@ -18,19 +18,12 @@
 
                 <div class="page-content">
 
-                    <div class="page-title-box">
-                        <div class="container-fluid">
-                            <div class="row align-items-center">
-                                <div class="col-md-8">
-                                    <h4 class="page-title mb-1">Starter page</h4>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="page-title-box pt-0 pb-5">
                     </div>
 
                     <div class="page-content-wrapper">
                         <div class="container-fluid">
-
+                            <?PHP HTML::importScript("callbacks"); ?>
                             <div class="row">
 
                                 <div class="col-xl-3">
@@ -299,25 +292,27 @@
                                         </div>
                                     </div>
 
-
-
                                 </div>
 
-
-
-
                                 <div class="col-xl-3">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="text-center">Welcome to Socialvoid</h5>
-                                            <p class="text-muted text-center">A new social network that powers free speech for anyone who has Internet Access</p>
+                                    <?PHP
+                                        if(WEB_SESSION_ACTIVE == false)
+                                        {
+                                            ?>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="text-center">Welcome to Socialvoid</h5>
+                                                    <p class="text-muted text-center">A new social network that powers free speech for anyone who has Internet Access</p>
 
-                                            <div class="mt-4">
-                                                <a href="#" class="btn btn-outline-info btn-block btn-rounded waves-effect waves-light">Login</a>
-                                                <a href="#" class="btn btn-info btn-block btn-rounded waves-effect waves-light">Signup</a>
+                                                    <div class="mt-4">
+                                                        <a href="#" class="btn btn-outline-info btn-block btn-rounded waves-effect waves-light">Login</a>
+                                                        <a href="#" class="btn btn-info btn-block btn-rounded waves-effect waves-light">Signup</a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                            <?PHP
+                                        }
+                                    ?>
                                 </div>
 
                             </div>
