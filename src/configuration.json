@@ -17,7 +17,7 @@
             "enabled": true,
             "configuration_name": "Socialvoid"
         },
-        "favicon": null,
+        "favicon": "/app_assets/images/favicon.ico",
         "localization_enabled": true,
         "debugging_mode": true,
         "framework_signature": true,

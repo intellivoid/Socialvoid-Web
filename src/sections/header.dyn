@@ -1,4 +1,5 @@
 <?php
+    use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\HTML;
 ?>
 <!-- Meta -->
@@ -6,23 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- App favicon -->
-<link rel="shortcut icon" href="/app_assets/images/favicon.ico">
+<link rel="shortcut icon" href="<?PHP Html::print(DynamicalWeb::getAssetRoute('app_assets', '/images/favicon.ico')); ?>">
 
-<!-- Bootstrap Css -->
-<?php
-
-    if(darkModeEnabled())
-    {
-        HTML::print("/>", false);
-        HTML::print(" />", false);
-    }
-    else
-    {
-        HTML::print("/>", false);
-        HTML::print(" />", false);
-    }
-
-?>
+<link href="<?PHP Html::print(DynamicalWeb::getAssetRoute('app_assets', '/css/bootstrap-dark.css')); ?>" rel="stylesheet" type="text/css"/>
+<link href="<?PHP Html::print(DynamicalWeb::getAssetRoute('app_assets', '/css/app-dark.css')); ?>" rel="stylesheet" type="text/css"/>
 
 <!-- Icons Css -->
-<link href="/app_assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+<link href="<?PHP Html::print(DynamicalWeb::getAssetRoute('app_assets', '/css/icons.min.css')); ?>" rel="stylesheet" type="text/css"/>

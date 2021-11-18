@@ -15,64 +15,7 @@
             "pre_installation": []
         }
     },
-    "components": [
-        {
-            "required": true,
-            "file": "app_assets/libs/ckeditor4/samples/old/assets/posteddata.php"
-        },
-        {
-            "required": true,
-            "file": "app_assets/libs/ckeditor4/samples/old/sample_posteddata.php"
-        },
-        {
-            "required": true,
-            "file": "pages/authentication/login/contents.php"
-        },
-        {
-            "required": true,
-            "file": "pages/authentication/logout/contents.php"
-        },
-        {
-            "required": true,
-            "file": "pages/index/contents.php"
-        },
-        {
-            "required": true,
-            "file": "pages/index/scripts/callbacks.php"
-        },
-        {
-            "required": true,
-            "file": "pages/user/avatar/contents.php"
-        },
-        {
-            "required": true,
-            "file": "sections/auth_login.php"
-        },
-        {
-            "required": true,
-            "file": "sections/auth_register.php"
-        },
-        {
-            "required": true,
-            "file": "sections/footer.php"
-        },
-        {
-            "required": true,
-            "file": "sections/header.php"
-        },
-        {
-            "required": true,
-            "file": "sections/javascript.php"
-        },
-        {
-            "required": true,
-            "file": "sections/navigation.php"
-        },
-        {
-            "required": true,
-            "file": "sections/right_sidebar.php"
-        }
-    ],
+    "components": [],
     "files": [
         "app_assets/css/app-dark.css",
         "app_assets/css/app-dark.min.css",
@@ -4455,88 +4398,6 @@
         "app_assets/libs/ckeditor4/plugins/wsc/dialogs/wsc_ie.js",
         "app_assets/libs/ckeditor4/plugins/wsc/skins/moono-lisa/wsc.css",
         "app_assets/libs/ckeditor4/plugins/xml/plugin.js",
-        "app_assets/libs/ckeditor4/samples/css/samples.css",
-        "app_assets/libs/ckeditor4/samples/img/github-top.png",
-        "app_assets/libs/ckeditor4/samples/img/header-bg.png",
-        "app_assets/libs/ckeditor4/samples/img/header-separator.png",
-        "app_assets/libs/ckeditor4/samples/img/logo.png",
-        "app_assets/libs/ckeditor4/samples/img/logo.svg",
-        "app_assets/libs/ckeditor4/samples/img/navigation-tip.png",
-        "app_assets/libs/ckeditor4/samples/index.html",
-        "app_assets/libs/ckeditor4/samples/js/sample.js",
-        "app_assets/libs/ckeditor4/samples/js/sf.js",
-        "app_assets/libs/ckeditor4/samples/old/ajax.html",
-        "app_assets/libs/ckeditor4/samples/old/api.html",
-        "app_assets/libs/ckeditor4/samples/old/appendto.html",
-        "app_assets/libs/ckeditor4/samples/old/assets/inlineall/logo.png",
-        "app_assets/libs/ckeditor4/samples/old/assets/outputxhtml/outputxhtml.css",
-        "app_assets/libs/ckeditor4/samples/old/assets/sample.jpg",
-        "app_assets/libs/ckeditor4/samples/old/assets/uilanguages/languages.js",
-        "app_assets/libs/ckeditor4/samples/old/autogrow/autogrow.html",
-        "app_assets/libs/ckeditor4/samples/old/bbcode/bbcode.html",
-        "app_assets/libs/ckeditor4/samples/old/codesnippet/codesnippet.html",
-        "app_assets/libs/ckeditor4/samples/old/datafiltering.html",
-        "app_assets/libs/ckeditor4/samples/old/devtools/devtools.html",
-        "app_assets/libs/ckeditor4/samples/old/dialog/assets/my_dialog.js",
-        "app_assets/libs/ckeditor4/samples/old/dialog/dialog.html",
-        "app_assets/libs/ckeditor4/samples/old/divarea/divarea.html",
-        "app_assets/libs/ckeditor4/samples/old/divreplace.html",
-        "app_assets/libs/ckeditor4/samples/old/docprops/docprops.html",
-        "app_assets/libs/ckeditor4/samples/old/easyimage/easyimage.html",
-        "app_assets/libs/ckeditor4/samples/old/emoji/emoji.html",
-        "app_assets/libs/ckeditor4/samples/old/enterkey/enterkey.html",
-        "app_assets/libs/ckeditor4/samples/old/htmlwriter/assets/outputforflash/outputforflash.fla",
-        "app_assets/libs/ckeditor4/samples/old/htmlwriter/assets/outputforflash/outputforflash.swf",
-        "app_assets/libs/ckeditor4/samples/old/htmlwriter/assets/outputforflash/swfobject.js",
-        "app_assets/libs/ckeditor4/samples/old/htmlwriter/outputforflash.html",
-        "app_assets/libs/ckeditor4/samples/old/htmlwriter/outputhtml.html",
-        "app_assets/libs/ckeditor4/samples/old/image2/assets/image1.jpg",
-        "app_assets/libs/ckeditor4/samples/old/image2/assets/image2.jpg",
-        "app_assets/libs/ckeditor4/samples/old/image2/image2.html",
-        "app_assets/libs/ckeditor4/samples/old/index.html",
-        "app_assets/libs/ckeditor4/samples/old/inlineall.html",
-        "app_assets/libs/ckeditor4/samples/old/inlinebycode.html",
-        "app_assets/libs/ckeditor4/samples/old/inlinetextarea.html",
-        "app_assets/libs/ckeditor4/samples/old/jquery.html",
-        "app_assets/libs/ckeditor4/samples/old/magicline/magicline.html",
-        "app_assets/libs/ckeditor4/samples/old/mathjax/mathjax.html",
-        "app_assets/libs/ckeditor4/samples/old/mentions/mentions.html",
-        "app_assets/libs/ckeditor4/samples/old/placeholder/placeholder.html",
-        "app_assets/libs/ckeditor4/samples/old/readonly.html",
-        "app_assets/libs/ckeditor4/samples/old/replacebyclass.html",
-        "app_assets/libs/ckeditor4/samples/old/replacebycode.html",
-        "app_assets/libs/ckeditor4/samples/old/sample.css",
-        "app_assets/libs/ckeditor4/samples/old/sample.js",
-        "app_assets/libs/ckeditor4/samples/old/sharedspace/sharedspace.html",
-        "app_assets/libs/ckeditor4/samples/old/sourcedialog/sourcedialog.html",
-        "app_assets/libs/ckeditor4/samples/old/stylesheetparser/assets/sample.css",
-        "app_assets/libs/ckeditor4/samples/old/stylesheetparser/stylesheetparser.html",
-        "app_assets/libs/ckeditor4/samples/old/tabindex.html",
-        "app_assets/libs/ckeditor4/samples/old/tableresize/tableresize.html",
-        "app_assets/libs/ckeditor4/samples/old/toolbar/toolbar.html",
-        "app_assets/libs/ckeditor4/samples/old/uicolor/uicolor.html",
-        "app_assets/libs/ckeditor4/samples/old/uicolor.html",
-        "app_assets/libs/ckeditor4/samples/old/uilanguages.html",
-        "app_assets/libs/ckeditor4/samples/old/wysiwygarea/fullpage.html",
-        "app_assets/libs/ckeditor4/samples/old/xhtmlstyle.html",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/css/fontello.css",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/font/config.json",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/font/fontello.eot",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/font/fontello.svg",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/font/fontello.ttf",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/font/fontello.woff",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/font/LICENSE.txt",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/index.html",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/js/abstracttoolbarmodifier.js",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/js/fulltoolbareditor.js",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/js/toolbarmodifier.js",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/js/toolbartextmodifier.js",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/lib/codemirror/codemirror.css",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/lib/codemirror/codemirror.js",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/lib/codemirror/javascript.js",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/lib/codemirror/neo.css",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/lib/codemirror/show-hint.css",
-        "app_assets/libs/ckeditor4/samples/toolbarconfigurator/lib/codemirror/show-hint.js",
         "app_assets/libs/ckeditor4/skins/kama/dialog.css",
         "app_assets/libs/ckeditor4/skins/kama/dialog_ie.css",
         "app_assets/libs/ckeditor4/skins/kama/dialog_ie7.css",
@@ -5315,6 +5176,17 @@
         "app_assets/libs/tinymce/themes/silver/theme.min.js",
         "app_assets/libs/tinymce/tinymce.min.js",
         "configuration.json",
-        "languages/en.json"
+        "localization/en.json",
+        "package.json",
+        "pages/authentication/login/contents.dyn",
+        "pages/authentication/logout/contents.dyn",
+        "pages/index/contents.dyn",
+        "sections/auth_login.dyn",
+        "sections/auth_register.dyn",
+        "sections/footer.dyn",
+        "sections/header.dyn",
+        "sections/javascript.dyn",
+        "sections/navigation.dyn",
+        "sections/right_sidebar.dyn"
     ]
 }
