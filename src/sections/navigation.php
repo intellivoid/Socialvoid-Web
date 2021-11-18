@@ -82,7 +82,7 @@ use DynamicalWeb\HTML;
             <div class="navbar-brand-box pr-0">
                 <a href="<?PHP DynamicalWeb::getRoute("index", [], true); ?>">
                     <h4 class="logo font-weight-light mb-0">
-                        <img src="/assets/images/logo-light.svg" class="pr-1 pb-1" alt="" height="32">
+                        <img src="/app_assets/images/logo-light.svg" class="pr-1 pb-1" alt="" height="32">
                         SOCIALVOID
                     </h4>
                 </a>

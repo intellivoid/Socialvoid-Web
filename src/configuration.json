@@ -1,45 +1,34 @@
 {
+    "name": "SocialvoidWeb",
+    "version": "1.0.0.0",
+    "author": "Zi Xing Narrakas",
+    "organization": "Intellivoid Technologies",
     "configuration": {
-        "primary_language": "en",
+        "root_path": "/",
+        "localization": {
+            "enabled": true,
+            "primary_localization": "en",
+            "auto_detect_preference": true,
+            "localizations": {
+                "en": "localization/en.json"
+            }
+        },
+        "sessions": {
+            "enabled": true,
+            "configuration_name": "Socialvoid"
+        },
+        "favicon": null,
+        "localization_enabled": true,
         "debugging_mode": true,
-        "enable_ppm": true,
-        "buffer_output": false,
-        "compression": {
-            "compress_html": true,
-            "compress_javascript": true,
-            "compress_css": true
-        },
-        "favicon": "/assets/images/favicon.ico"
+        "framework_signature": true,
+        "application_signature": true,
+        "security_headers": true,
+        "headers": {}
     },
-    "router": [
-        {"method": ["GET"], "path": "/", "page": "index", "params": []},
-
-        {"method": ["GET"], "path": "/user/avatar", "page": "user/avatar", "params": []},
-
-        {"method": ["GET", "POST"], "path": "/auth/logout", "page": "authentication/logout", "params": []},
-        {"method": ["GET", "POST"], "path": "/auth/login", "page": "authentication/login", "params": []}
+    "web_assets": [
+        {"type": "local", "name": "app_assets", "source": "app_assets", "path": "app/assets"}
     ],
-    "libraries": {
-        "SecuredWebSessions": {
-            "directory_name": "sws",
-            "autoloader": "sws.php",
-            "check_class_exists": true,
-            "namespace": "sws",
-            "main_class": "sws"
-        },
-        "SocialvoidLib": {
-            "package_name": "net.intellivoid.socialvoidlib",
-            "version": "latest",
-            "import_dependencies": true,
-            "throw_error": true
-        }
-    },
-    "runtime_scripts": {
-        "initialize": [],
-        "on_page_load": ["interface_manager.php", "auth_check.php"],
-        "page_loaded": [],
-        "after_request": [],
-        "on_request": [],
-        "on_import": []
-    }
+    "router": [
+        {"method": ["GET"], "path": "", "page": "index", "params": []}
+    ]
 }
