@@ -17,7 +17,7 @@
             "enabled": true,
             "configuration_name": "Socialvoid"
         },
-        "favicon": "/app_assets/images/favicon.ico",
+        "favicon": null,
         "localization_enabled": true,
         "debugging_mode": true,
         "framework_signature": true,
@@ -26,7 +26,7 @@
         "headers": {}
     },
     "web_assets": [
-        {"type": "local", "name": "app_assets", "source": "app_assets", "path": "app/assets"}
+        {"type": "ppm", "name": "app_assets", "source": "net.intellivoid.socialvoid_web_assets==latest", "path": "app/assets"}
     ],
     "router": [
         {"method": ["GET"], "path": "", "page": "index", "params": []}
