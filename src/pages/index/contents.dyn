@@ -11,8 +11,11 @@
     <body data-topbar="colored" data-layout="horizontal">
         <div id="layout-wrapper">
             <?PHP HTML::importSection("navigation"); ?>
+
             <div class="main-content">
                 <div class="page-content">
+
+
                     <div class="page-title-box pt-0 pb-5">
                     </div>
                     <div class="page-content-wrapper">
@@ -42,10 +45,24 @@
                                     </div>
                                 </div>
 
+
                                 <div class="col-xl-6">
+                                    <ul class="nav nav-tabs nav-justified nav-tabs-custom bg-light mb-3" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#custom-home" role="tab" aria-selected="false">
+                                                <i class="fas fa-home mr-1"></i> <span class="d-none d-md-inline-block">Timeline</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#custom-profile" role="tab" aria-selected="false">
+                                                <i class="fas fa-user mr-1 align-middle"></i> <span class="d-none d-md-inline-block">Global Timeline</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+
 
                                     <!-- Text Post -->
-                                    <div class="card">
+                                    <div class="card mb-0 rounded-0">
                                         <div class="card-header">
                                             <div class="media">
                                                 <img class="d-flex mr-3 rounded-circle" src="https://accounts.intellivoid.net/user/contents/public/avatar?user_id=e7fb53bb52219fdae7d5ba0a78b87ad361f008d90f40688baf3b76a06f5add59a8023d3d7b96d478&resource=normal" alt="" height="46">
@@ -278,7 +295,6 @@
                                         </div>
                                     </div>
 
-
                                     <div class="card">
                                         <div class="card-body">
                                             <p class="font-size-16 text-muted text-center mb-0">Loading more...</p>
@@ -286,11 +302,7 @@
                                     </div>
 
                                 </div>
-
-
-
                             </div>
-
                         </div>
                     </div>
 

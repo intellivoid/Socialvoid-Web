@@ -19,6 +19,12 @@
                 "version": "latest",
                 "source": "default@github/intellivoid/Socialvoid-Web-Assets",
                 "required": true
+            },
+            {
+                "package": "net.intellivoid.socialvoidlib",
+                "version": "latest",
+                "source": null,
+                "required": true
             }
         ],
         "configuration": {
