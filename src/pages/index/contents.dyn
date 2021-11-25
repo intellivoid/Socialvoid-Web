@@ -15,54 +15,81 @@
             <div class="main-content">
                 <div class="page-content">
 
+                    <div class="page-title-box">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="page-title mb-1">Timeline</h4>
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Socialvoid</a></li>
+                                        <li class="breadcrumb-item active">Timeline</li>
+                                    </ol>
+                                </div>
+                            </div>
 
-                    <div class="page-title-box pt-0 pb-5">
+                        </div>
                     </div>
+
                     <div class="page-content-wrapper">
                         <div class="container-fluid">
                             <?PHP //HTML::importScript("callbacks"); ?>
                             <div class="row">
-                                <div class="col-xl-3">
+                                <div class="col-xl-4">
                                     <div class="card">
                                         <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <h5>Socialvoid</h5>
-                                                    <p class="text-muted">Xoric Dashboard</p>
+                                            <div class="text-center">
+                                                <h4>Welcome to Socialvoid</h4>
+                                                <p class="text-muted">Support us</p>
 
-                                                    <div class="mt-4">
-                                                        <a href="#" class="btn btn-primary btn-sm">View more <i class="mdi mdi-arrow-right ml-1"></i></a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-5 ml-auto">
-                                                    <div>
-                                                        <img src="/app/assets/images/widget-img.png" alt="" class="img-fluid">
-                                                    </div>
-                                                </div>
+                                                <button class="btn btn-block btn-outline-info btn-rounded">Login</button>
+                                                <button class="btn btn-block btn-info btn-rounded">Signup</button>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p class="text-muted mb-2 d-none d-md-inline-block">Menu</p>
+
+                                            <ul class="nav nav-pills nav-justified flex-md-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active text-md-left" href="#">
+                                                        <i class="mdi mdi-home-variant-outline font-size-18 mr-1 align-middle"></i>
+                                                        <span class="d-none d-md-inline-block">Home</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link text-md-left" href="#">
+                                                        <i class="mdi mdi-globe-model font-size-18 mr-1 align-middle"></i>
+                                                        <span class="d-none d-md-inline-block">Global</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link text-md-left" href="#">
+                                                        <i class="mdi mdi-bell-outline font-size-18 mr-1 align-middle"></i>
+                                                        <span class="d-none d-md-inline-block">Notifications</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link text-md-left" href="#">
+                                                        <i class="mdi mdi-email-outline font-size-18 mr-1 align-middle"></i>
+                                                        <span class="d-none d-md-inline-block">Messages</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link text-md-left" href="#">
+                                                        <i class="dripicons-gear mr-1 align-middle"></i>
+                                                        <span class="d-none d-md-inline-block">Settings</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-
-
-                                <div class="col-xl-6">
-                                    <ul class="nav nav-tabs nav-justified nav-tabs-custom bg-light mb-3" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#custom-home" role="tab" aria-selected="false">
-                                                <i class="fas fa-home mr-1"></i> <span class="d-none d-md-inline-block">Timeline</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#custom-profile" role="tab" aria-selected="false">
-                                                <i class="fas fa-user mr-1 align-middle"></i> <span class="d-none d-md-inline-block">Global Timeline</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-
+                                <div class="col-xl-8">
 
                                     <!-- Text Post -->
-                                    <div class="card mb-0 rounded-0">
+                                    <div class="card">
                                         <div class="card-header">
                                             <div class="media">
                                                 <img class="d-flex mr-3 rounded-circle" src="https://accounts.intellivoid.net/user/contents/public/avatar?user_id=e7fb53bb52219fdae7d5ba0a78b87ad361f008d90f40688baf3b76a06f5add59a8023d3d7b96d478&resource=normal" alt="" height="46">
@@ -70,7 +97,6 @@
                                                     <h5 class="font-size-15 font-weight-bold mb-1" id="">
                                                         Zi Xing
                                                         <i class="mdi mdi-check-circle text-info"></i>
-
                                                         <span class="font-weight-light text-muted pl-1">@netkas</span>
                                                     </h5>
                                                     <span>Posted 5 minutes ago</span>
@@ -109,7 +135,6 @@
                                         </div>
                                     </div>
 
-
                                     <!-- Photo Post -->
                                     <div class="card">
                                         <div class="card-header">
@@ -142,7 +167,7 @@
                                         <div class="card-body">
                                             <p class="font-size-16 text-white mb-0">Hello Netkas!</p>
                                         </div>
-                                        <img class="img-fluid post-image rounded" src="https://api.telegram.org/file/bot1204353955:AAF5onK1sP8W_X5iA_A1d9THccismKNcU38/photos/file_2.jpg" height="126" alt="Card image cap">
+                                        <img class="img-fluid post-image rounded" src="https://cdn.vox-cdn.com/thumbor/9j-s_MPUfWM4bWdZfPqxBxGkvlw=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22312759/rickroll_4k.jpg" height="126" alt="Card image cap">
                                         <div class="card-footer text-muted bg-transparent border-top">
                                             <a href="#" class="card-link text-white">
                                                 <i class="mdi mdi-comment"></i> 7
@@ -226,7 +251,6 @@
                                         </div>
                                     </div>
 
-
                                     <!-- Quote -->
                                     <div class="card">
                                         <div class="card-header">
@@ -295,6 +319,7 @@
                                         </div>
                                     </div>
 
+                                    <!-- Loading more -->
                                     <div class="card">
                                         <div class="card-body">
                                             <p class="font-size-16 text-muted text-center mb-0">Loading more...</p>
@@ -302,6 +327,7 @@
                                     </div>
 
                                 </div>
+
                             </div>
                         </div>
                     </div>
