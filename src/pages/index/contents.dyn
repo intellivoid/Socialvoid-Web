@@ -1,5 +1,7 @@
 <?php
-    use DynamicalWeb\HTML;
+
+use DynamicalWeb\DynamicalWeb;
+use DynamicalWeb\HTML;
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(DYNAMICAL_PRIMARY_LOCALIZATION_ISO_CODE); ?>">
@@ -35,18 +37,12 @@
                             <?PHP //HTML::importScript("callbacks"); ?>
                             <div class="row">
                                 <div class="col-xl-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <h4>Welcome to Socialvoid</h4>
-                                                <p class="text-muted">Support us</p>
-
-                                                <button class="btn btn-block btn-outline-info btn-rounded">Login</button>
-                                                <button class="btn btn-block btn-info btn-rounded">Signup</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    <?PHP
+                                        if(SV_AUTHENTICATED == false)
+                                        {
+                                            Html::importSection('cards/welcome_card');
+                                        }
+                                    ?>
                                     <div class="card">
                                         <div class="card-body">
                                             <p class="text-muted mb-2 d-none d-md-inline-block">Menu</p>
@@ -331,12 +327,12 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <?PHP HTML::importSection("footer"); ?>
             </div>
         </div>
         <?PHP HTML::importSection("right_sidebar"); ?>
         <?PHP HTML::importSection("javascript"); ?>
+        <?PHP if(SV_AUTHENTICATED == false) { Html::importJavascript('captcha'); } ?>
     </body>
 </html>

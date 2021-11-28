@@ -37,17 +37,27 @@
     "components": [],
     "files": [
         "configuration.json",
+        "javascript/captcha.js.dyn",
         "localization/en.json",
         "package.json",
         "pages/authentication/login/contents.dyn",
         "pages/authentication/logout/contents.dyn",
+        "pages/authentication/register/contents.dyn",
         "pages/index/contents.dyn",
+        "pages/legal/privacy_policy/contents.dyn",
+        "pages/legal/terms_of_service/contents.dyn",
+        "pages/network_handler/get_captcha/contents.dyn",
+        "scripts/client.dyn",
+        "scripts/session.dyn",
         "sections/auth_login.dyn",
         "sections/auth_register.dyn",
+        "sections/cards/welcome_card.dyn",
+        "sections/dialogs/authenticate_login.dyn",
         "sections/footer.dyn",
         "sections/header.dyn",
         "sections/javascript.dyn",
         "sections/navigation.dyn",
+        "sections/parts/user_dropdown.dyn",
         "sections/right_sidebar.dyn"
     ]
 }

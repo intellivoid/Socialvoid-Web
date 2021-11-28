@@ -1,0 +1,91 @@
+<?php
+    use DynamicalWeb\HTML;
+use MarkdownParser\MarkdownParser;
+
+?>
+<!doctype html>
+<html lang="<?PHP HTML::print(DYNAMICAL_PRIMARY_LOCALIZATION_ISO_CODE); ?>">
+
+    <head>
+        <?PHP HTML::importSection("header"); ?>
+        <title>Socialvoid - Terms of Service</title>
+    </head>
+    <body data-topbar="colored" data-layout="horizontal">
+        <div id="layout-wrapper">
+            <?PHP HTML::importSection("navigation"); ?>
+
+            <div class="main-content">
+                <div class="page-content">
+
+                    <div class="page-title-box">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="page-title mb-1">Terms of Service</h4>
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Socialvoid</a></li>
+                                        <li class="breadcrumb-item active">Terms of Service</li>
+                                    </ol>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="page-content-wrapper">
+                        <div class="container-fluid">
+
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row justify-content-center">
+                                                <div class="col-lg-10">
+                                                    <div class="text-center mt-4">
+                                                        <h4>Privacy Policy</h4>
+                                                        <p class="text-muted">We love privacy, so here's the gist.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-5">
+                                                <div class="col-lg-7">
+                                                    <div>
+                                                        <?PHP
+                                                            $markdown_parser = new MarkdownParser();
+                                                            Html::print($markdown_parser->parse(getNetworkSession()->getPrivacyPolicy()->Text), false);
+                                                        ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 ml-auto">
+                                                    <div class="mt-4 mt-lg-0">
+                                                        <div class="icons-md mb-4">
+                                                            <span class="uim-svg" style=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em"><path class="uim-primary" d="M17,13H7a1,1,0,0,1,0-2H17a1,1,0,0,1,0,2Z"></path><path class="uim-tertiary" d="M12,2A10.00082,10.00082,0,0,0,4.25684,18.3291L2.293,20.293A.99991.99991,0,0,0,3,22h9A10,10,0,0,0,12,2ZM9,7h6a1,1,0,0,1,0,2H9A1,1,0,0,1,9,7Zm6,10H9a1,1,0,0,1,0-2h6a1,1,0,0,1,0,2Zm2-4H7a1,1,0,0,1,0-2H17a1,1,0,0,1,0,2Z"></path><path class="uim-primary" d="M15 17H9a1 1 0 0 1 0-2h6a1 1 0 0 1 0 2zM15 9H9A1 1 0 0 1 9 7h6a1 1 0 0 1 0 2z"></path></svg></span>
+                                                        </div>
+                                                        <h5>Can't find what you are looking for?</h5>
+                                                        <div class="text-muted">
+                                                            <p class="mb-4">To achieve this, it would be necessary to have uniform grammar, pronunciation and common words</p>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" class="btn btn-primary mt-1 mr-2 waves-effect waves-light"><i class="mdi mdi-email-outline mr-1"></i> Email Us</button>
+                                                            <button type="button" class="btn btn-info mt-1 waves-effect waves-light"><i class="mdi mdi-twitter mr-1"></i> Send us a tweet</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <?PHP HTML::importSection("footer"); ?>
+            </div>
+        </div>
+        <?PHP HTML::importSection("right_sidebar"); ?>
+        <?PHP HTML::importSection("javascript"); ?>
+    </body>
+</html>

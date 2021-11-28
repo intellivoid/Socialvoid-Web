@@ -1,0 +1,14 @@
+<?php
+    use DynamicalWeb\Html;
+?>
+<div class="card">
+    <div class="card-body">
+        <div class="text-center">
+            <h4>Welcome to Socialvoid</h4>
+            <p class="text-muted">Support us</p>
+            <button type="button" class="btn btn-block btn-outline-info btn-rounded waves-effect waves-light mb-2" data-toggle="modal" data-target="#authenticate_login_dialog">Login</button>
+            <?PHP Html::importSection('dialogs/authenticate_login'); ?>
+            <button class="btn btn-block btn-info btn-rounded waves-effect waves-light">Signup</button>
+        </div>
+    </div>
+</div>

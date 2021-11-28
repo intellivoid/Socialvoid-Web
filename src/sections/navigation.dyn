@@ -9,7 +9,6 @@ use DynamicalWeb\HTML;
     <div class="navbar-header">
         <div class="container-fluid">
             <div class="float-right">
-
                 <form class="app-search d-inline-block">
                     <div class="position-relative">
                         <input type="text" class="form-control" placeholder="Search...">
@@ -18,26 +17,12 @@ use DynamicalWeb\HTML;
                 </form>
 
                 <!-- User -->
-                <div class="dropdown d-inline-block">
-
-                    <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="https://accounts.intellivoid.net/user/contents/public/avatar?user_id=e7fb53bb52219fdae7d5ba0a78b87ad361f008d90f40688baf3b76a06f5add59a8023d3d7b96d478&resource=normal" alt="Netkas">
-                        <span class="d-none d-sm-inline-block ml-1">@Netkas</span>
-                        <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
-                    </button>
-
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <!-- item-->
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-face-profile font-size-16 align-middle mr-1"></i> Profile</a>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-credit-card-outline font-size-16 align-middle mr-1"></i> Billing</a>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-settings font-size-16 align-middle mr-1"></i> Settings</a>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-lock font-size-16 align-middle mr-1"></i> Lock screen</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-logout font-size-16 align-middle mr-1"></i> Logout</a>
-                    </div>
-
-
-                </div>
+                <?PHP
+                    if(SV_AUTHENTICATED)
+                    {
+                        Html::importSection('parts/user_dropdown');
+                    }
+                ?>
             </div>
 
             <!-- LOGO -->
@@ -48,7 +33,6 @@ use DynamicalWeb\HTML;
                         SOCIALVOID
                     </h4>
                 </a>
-
             </div>
         </div>
     </div>

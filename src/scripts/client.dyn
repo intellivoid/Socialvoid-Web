@@ -1,0 +1,35 @@
+<?php
+
+    use DynamicalWeb\Abstracts\ResourceSource;
+    use DynamicalWeb\DynamicalWeb;
+    use SocialvoidLib\NetworkSession;
+    use SocialvoidLib\SocialvoidLib;
+    require 'ppm';
+
+    import('net.intellivoid.socialvoidlib');
+
+    if(DynamicalWeb::activeRequestHandler()->ResourceSource == ResourceSource::Page)
+    {
+        if(DynamicalWeb::getMemoryObject('socialvoid_instance') == null)
+            DynamicalWeb::setMemoryObject('socialvoid_instance', new SocialvoidLib());
+
+        if(DynamicalWeb::getMemoryObject('network_session') == null)
+            DynamicalWeb::setMemoryObject('network_session',  new NetworkSession(DynamicalWeb::getMemoryObject('socialvoid_instance')));
+
+        if(function_exists('getNetworkSession') == false)
+        {
+            function getNetworkSession(): NetworkSession
+            {
+                return DynamicalWeb::getMemoryObject('network_session');
+            }
+        }
+
+        if(function_exists('getSocialvoid') == false)
+        {
+            function getSocialvoid(): SocialvoidLib
+            {
+                return DynamicalWeb::getMemoryObject('socialvoid_instance');
+            }
+        }
+
+    }

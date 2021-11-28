@@ -1,0 +1,56 @@
+<?php
+
+    use DynamicalWeb\Cookies;
+    use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\Exceptions\CookieStorageNotFoundException;
+    use SocialvoidLib\Abstracts\Types\Standard\CaptchaType;
+    use SocialvoidLib\Exceptions\Standard\Security\CaptchaNotFoundException;
+
+    $active_request_handler = DynamicalWeb::activeRequestHandler();
+
+    try
+    {
+        $CookieStorage = Cookies::getCookieStorage('sv_session');
+    }
+    catch (CookieStorageNotFoundException $e)
+    {
+
+        $active_request_handler->Redirect = true;
+        $active_request_handler->RedirectLocation = DynamicalWeb::getRoute('index');
+        DynamicalWeb::activeRequestHandler($active_request_handler);
+        return;
+    }
+
+    $CreateCaptcha = false;
+
+    if($CookieStorage->Data['captcha_active'] == true)
+    {
+        try
+        {
+            $captcha = getNetworkSession()->getCaptcha()->getCaptcha($CookieStorage->Data['captcha_id']);
+
+            if(time() > $captcha->Expires)
+                $CreateCaptcha = true;
+        }
+        catch (CaptchaNotFoundException $e)
+        {
+            $CreateCaptcha = true;
+        }
+    }
+    else
+    {
+        $CreateCaptcha = true;
+    }
+
+    if($CreateCaptcha)
+    {
+        $captcha = getNetworkSession()->getCaptcha()->createCaptcha(DYNAMICAL_CLIENT_IP_ADDRESS, 120, CaptchaType::ImageTextScrambleChallenge);
+        $CookieStorage->Data['captcha_active'] = true;
+        $CookieStorage->Data['captcha_id'] = $captcha->ID;
+        $CookieStorage->Data['captcha_expires'] = $captcha->Expires;
+        Cookies::updateCookieStorage($CookieStorage);
+    }
+
+    $active_request_handler->setResponseContentType('text/plain');
+    DynamicalWeb::activeRequestHandler($active_request_handler);
+    print($captcha->Value);
