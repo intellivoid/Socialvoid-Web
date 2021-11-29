@@ -1,7 +1,6 @@
 <?php
-
-use DynamicalWeb\DynamicalWeb;
-use DynamicalWeb\HTML;
+    use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\HTML;
 ?>
 <!doctype html>
 <html lang="<?PHP HTML::print(DYNAMICAL_PRIMARY_LOCALIZATION_ISO_CODE); ?>">

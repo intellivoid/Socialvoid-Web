@@ -1,8 +1,34 @@
 <?PHP
 
-    use DynamicalWeb\Actions;
+    use DynamicalWeb\Cookies;
     use DynamicalWeb\DynamicalWeb;
-    use sws\sws;
+    use DynamicalWeb\Exceptions\CookieStorageNotFoundException;
+
+    $active_request_handler = DynamicalWeb::activeRequestHandler();
+
+    if(SV_AUTHENTICATED)
+    {
+        // Don't authenticate if the user is already authenticated
+        $active_request_handler->Redirect = true;
+        $active_request_handler->RedirectLocation = DynamicalWeb::getRoute('index');
+        DynamicalWeb::activeRequestHandler($active_request_handler);
+        return;
+    }
+
+    try
+    {
+        $CookieStorage = Cookies::getCookieStorage('sv_session');
+    }
+    catch (CookieStorageNotFoundException $e)
+    {
+        $active_request_handler->Redirect = true;
+        $active_request_handler->RedirectLocation = DynamicalWeb::getRoute('index');
+        DynamicalWeb::activeRequestHandler($active_request_handler);
+        return;
+    }
+
+    $networkSession = getNetworkSession();
+    $networkSession->se
 
     if(WEB_SESSION_ACTIVE == true)
     {
