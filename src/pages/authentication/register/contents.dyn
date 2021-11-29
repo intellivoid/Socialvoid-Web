@@ -3,12 +3,12 @@
     use DynamicalWeb\Cookies;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Exceptions\CookieStorageNotFoundException;
-use SocialvoidLib\Exceptions\Standard\Authentication\AlreadyAuthenticatedException;
-use SocialvoidLib\Exceptions\Standard\Validation\InvalidFirstNameException;
-use SocialvoidLib\Exceptions\Standard\Validation\InvalidLastNameException;
-use SocialvoidLib\Exceptions\Standard\Validation\InvalidPasswordException;
-use SocialvoidLib\Exceptions\Standard\Validation\InvalidUsernameException;
-use SocialvoidLib\Exceptions\Standard\Validation\UsernameAlreadyExistsException;
+    use SocialvoidLib\Exceptions\Standard\Authentication\AlreadyAuthenticatedException;
+    use SocialvoidLib\Exceptions\Standard\Validation\InvalidFirstNameException;
+    use SocialvoidLib\Exceptions\Standard\Validation\InvalidLastNameException;
+    use SocialvoidLib\Exceptions\Standard\Validation\InvalidPasswordException;
+    use SocialvoidLib\Exceptions\Standard\Validation\InvalidUsernameException;
+    use SocialvoidLib\Exceptions\Standard\Validation\UsernameAlreadyExistsException;
 
     $active_request_handler = DynamicalWeb::activeRequestHandler();
 

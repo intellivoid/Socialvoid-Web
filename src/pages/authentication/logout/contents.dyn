@@ -1,31 +1,33 @@
 <?PHP
 
-    use DynamicalWeb\Actions;
+    use DynamicalWeb\Cookies;
     use DynamicalWeb\DynamicalWeb;
-    use sws\sws;
+    use SocialvoidLib\Exceptions\GenericInternal\CacheException;
 
-    if(WEB_SESSION_ACTIVE == true)
+    $active_request_handler = DynamicalWeb::activeRequestHandler();
+
+    if(SV_AUTHENTICATED == false)
     {
-        /** @var sws $sws */
-        $sws = DynamicalWeb::getMemoryObject('sws');
-        $Cookie = $sws->WebManager()->getCookie('socialvoid_session');
-
-        $Cookie->Data["session_active"] = false;
-        $Cookie->Data["user_id"] = null;
-        $Cookie->Data["user_public_id"] = null;
-        $Cookie->Data["user_username"] = null;
-        $Cookie->Data["user_username_safe"] = null;
-        $Cookie->Data["session"] = null;
-        $Cookie->Data["session_id"] = null;
-        $Cookie->Data["session_public_id"] = null;
-        $Cookie->Data["verification_required"] = false;
-        $Cookie->Data["auto_logout"] = 0;
-
-        $sws->CookieManager()->updateCookie($Cookie);
-        $sws->WebManager()->disposeCookie('socialvoid_lib');
+        // Don't authenticate if the user is already authenticated
+        $active_request_handler->Redirect = true;
+        $active_request_handler->RedirectLocation = DynamicalWeb::getRoute('index');
+        DynamicalWeb::activeRequestHandler($active_request_handler);
+        return;
     }
 
+    try
+    {
+        /** @noinspection PhpUnhandledExceptionInspection */
+        getNetworkSession()->logout();
+    }
+    catch (CacheException $e)
+    {
+        unset($e);
+    }
 
-    $GetParameters = $_GET;
-    unset($GetParameters['callback']);
-    Actions::redirect(DynamicalWeb::getRoute("authentication/login", $GetParameters));
+    /** @noinspection PhpUnhandledExceptionInspection */
+    $CookieStorage = Cookies::getCookieStorage('sv_session');
+    $CookieStorage->Data['authenticated'] = false;
+    $CookieStorage->Data['authenticated_peer_id'] = null;
+    $CookieStorage->Data['authenticated_peer_username'] = null;
+    Cookies::updateCookieStorage($CookieStorage);
