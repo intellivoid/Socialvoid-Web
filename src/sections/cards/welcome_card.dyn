@@ -8,7 +8,8 @@
             <p class="text-muted">Support us</p>
             <button type="button" class="btn btn-block btn-outline-info btn-rounded waves-effect waves-light mb-2" data-toggle="modal" data-target="#authenticate_login_dialog">Login</button>
             <?PHP Html::importSection('dialogs/authenticate_login'); ?>
-            <button class="btn btn-block btn-info btn-rounded waves-effect waves-light">Signup</button>
+            <button class="btn btn-block btn-info btn-rounded waves-effect waves-light" data-toggle="modal" data-target="#authenticate_register_dialog">Signup</button>
+            <?PHP Html::importSection('dialogs/authenticate_register'); ?>
         </div>
     </div>
 </div>

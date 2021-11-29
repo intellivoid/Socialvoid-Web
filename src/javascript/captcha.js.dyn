@@ -4,22 +4,44 @@
 ?>
 
 $(document).ready(function(){
-    function reloadCaptcha() {
-        $("#login_captcha").attr("src", "#");
-        $.ajax({
-            url: "<?php Html::print(DynamicalWeb::getRoute('network_handler/get_captcha')); ?>",
-            type: 'GET',
-            success: function(res) {
-                $("#login_captcha").attr("src", res);
-            }
-        });
+    function reloadCaptcha(dialog) {
+        if(dialog === 'login')
+        {
+            $("#login_captcha").attr("src", "#");
+            $.ajax({
+                url: "<?php Html::print(DynamicalWeb::getRoute('network_handler/get_captcha')); ?>",
+                type: 'GET',
+                success: function(res) {
+                    $("#login_captcha").attr("src", res);
+                }
+            });
+        }
+        if(dialog === 'register')
+        {
+            $("#register_captcha").attr("src", "#");
+            $.ajax({
+                url: "<?php Html::print(DynamicalWeb::getRoute('network_handler/get_captcha')); ?>",
+                type: 'GET',
+                success: function(res) {
+                    $("#register_captcha").attr("src", res);
+                }
+            });
+        }
     }
     $("#login_reload_captcha").click(function(){
-        reloadCaptcha();
+        reloadCaptcha('login');
         return false;
     });
     $('#authenticate_login_dialog').on('shown.bs.modal', function (e) {
         $('#login_username').trigger('focus');
-        reloadCaptcha();
+        reloadCaptcha('login');
+    });
+    $("#register_reload_captcha").click(function(){
+        reloadCaptcha('register');
+        return false;
+    });
+    $('#authenticate_register_dialog').on('shown.bs.modal', function (e) {
+        $('#register_first_name').trigger('focus');
+        reloadCaptcha('register');
     });
 });

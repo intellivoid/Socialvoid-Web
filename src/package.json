@@ -53,6 +53,7 @@
         "sections/auth_register.dyn",
         "sections/cards/welcome_card.dyn",
         "sections/dialogs/authenticate_login.dyn",
+        "sections/dialogs/authenticate_register.dyn",
         "sections/footer.dyn",
         "sections/header.dyn",
         "sections/javascript.dyn",

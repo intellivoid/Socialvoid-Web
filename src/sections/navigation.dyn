@@ -9,16 +9,40 @@ use DynamicalWeb\HTML;
     <div class="navbar-header">
         <div class="container-fluid">
             <div class="float-right">
-                <form class="app-search d-inline-block">
+                <form class="app-search d-md-inline-block d-none">
                     <div class="position-relative">
                         <input type="text" class="form-control" placeholder="Search...">
                         <span class="mdi mdi-magnify"></span>
                     </div>
                 </form>
 
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                        <i class="mdi mdi-home"></i>
+                    </button>
+                </div>
+
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                        <i class="mdi mdi-globe-model"></i>
+                    </button>
+                </div>
+
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                        <i class="mdi mdi-bell"></i>
+                    </button>
+                </div>
+
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                        <i class="mdi mdi-email"></i>
+                    </button>
+                </div>
+
                 <!-- User -->
                 <?PHP
-                    if(SV_AUTHENTICATED)
+                    if(SV_AUTHENTICATED == false)
                     {
                         Html::importSection('parts/user_dropdown');
                     }
@@ -30,10 +54,11 @@ use DynamicalWeb\HTML;
                 <a href="#">
                     <h4 class="logo font-weight-light mb-0">
                         <img src="/app/assets/images/logo-light.svg" class="pr-1 pb-1" alt="" height="32">
-                        SOCIALVOID
+                        <span class="d-md-inline-block d-none">SOCIALVOID</span>
                     </h4>
                 </a>
             </div>
+
         </div>
     </div>
 </header>

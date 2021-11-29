@@ -1,0 +1,60 @@
+<div class="modal fade authenticate_register_dialog" tabindex="-1" id="authenticate_register_dialog" role="dialog" aria-labelledby="authenticate_register_dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="authenticate_login_dialog">Join the conversation!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                        <i class="fa fa-times text-white"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="<?PHP \DynamicalWeb\Html::print(\DynamicalWeb\DynamicalWeb::getRoute('authentication/login')); ?>">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group mb-4">
+                                <h5 class="font-size-14 text-left">First Name</h5>
+                                <input class="form-control" type="text" placeholder="First Name" id="register_first_name" name="register_first_name" autocomplete="given-name">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group mb-4">
+                                <h5 class="font-size-14 text-left">Last Name</h5>
+                                <input class="form-control" type="text" placeholder="Last Name" id="register_last_name" name="register_last_name" autocomplete="family-name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <h5 class="font-size-14 text-left">Username</h5>
+                        <input class="form-control" type="text" placeholder="Username" id="register_username" name="register_username" autocomplete="username" required>
+                    </div>
+                    <div class="form-group mb-4">
+                        <h5 class="font-size-14 text-left">Password</h5>
+                        <input class="form-control" type="password" placeholder="Password" id="register_password" name="register_password" autocomplete="password" required>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <img alt="Loading Captcha" id="register_captcha" class="img-fluid rounded px-5 mb-3" src="#">
+                        <div class="input-group mt-sm-0 mr-sm-3">
+                            <input type="text" class="form-control" id="register_captcha_answer" placeholder="Captcha" required>
+                            <button class="input-group-append btn btn-light" id="register_reload_captcha" name="register_reload_captcha">
+                                <i class="fa fa-sync pt-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" value="" id="register_">
+                        <label class="form-check-label" for="register_">
+                            I accept <a href="#" class="text-primary">Terms and Conditions</a> and have read the <a href="#" class="text-primary">Community Guidelines</a>
+                        </label>
+                    </div>
+                    <div class="mt-4">
+                        <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
