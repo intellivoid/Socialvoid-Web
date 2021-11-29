@@ -113,9 +113,9 @@
 
         $SessionIdentification = new SessionIdentification();
         /** @noinspection PhpUnhandledExceptionInspection */
-        $SessionIdentification->ChallengeAnswer = Crypto::getCode(SV_SESSION_CHALLENGE);
+        $SessionIdentification->ChallengeAnswer = hash("sha1", Crypto::getCode($CookieStorage->Data['session_challenge']) . SV_CLIENT_PRIVATE_HASH);
         $SessionIdentification->ClientPublicHash = SV_CLIENT_PUBLIC_HASH;
-        $SessionIdentification->SessionID = SV_SESSION_ID;
+        $SessionIdentification->SessionID = $CookieStorage->Data['session_id'];
 
         try
         {
@@ -135,4 +135,15 @@
         define('SV_SESSION_ESTABLISHED', $CookieStorage->Data['session_established']);
         define('SV_SESSION_ID', $CookieStorage->Data['session_id']);
         define('SV_SESSION_CHALLENGE', $CookieStorage->Data['session_challenge']);
+
+        if($CookieStorage->Data['authenticated'])
+        {
+            define('SV_PEER_ID', $CookieStorage->Data['authenticated_peer_id']);
+            define('SV_PEER_USERNAME', $CookieStorage->Data['authenticated_peer_username']);
+        }
+        else
+        {
+            define('SV_PEER_ID', null);
+            define('SV_PEER_USERNAME', null);
+        }
     }

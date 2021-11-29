@@ -34,7 +34,12 @@
             "pre_installation": []
         }
     },
-    "components": [],
+    "components": [
+        {
+            "required": true,
+            "file": "scripts/std_error_handler.php"
+        }
+    ],
     "files": [
         "configuration.json",
         "javascript/captcha.js.dyn",
@@ -48,9 +53,11 @@
         "pages/legal/terms_of_service/contents.dyn",
         "pages/network_handler/get_captcha/contents.dyn",
         "scripts/client.dyn",
+        "scripts/render_alert.dyn",
         "scripts/session.dyn",
         "sections/auth_login.dyn",
         "sections/auth_register.dyn",
+        "sections/callbacks/authentication_callbacks.dyn",
         "sections/cards/welcome_card.dyn",
         "sections/dialogs/authenticate_login.dyn",
         "sections/dialogs/authenticate_register.dyn",

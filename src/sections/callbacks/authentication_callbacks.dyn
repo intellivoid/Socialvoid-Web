@@ -1,0 +1,63 @@
+<?php
+
+    use DynamicalWeb\Cookies;
+    use DynamicalWeb\DynamicalWeb;
+
+    if(isset(DynamicalWeb::activeRequestHandler()->getParameters()['callback']))
+    {
+        $additional_details = null;
+
+        if(isset(DynamicalWeb::activeRequestHandler()->getParameters()['std_error']))
+        {
+            $CookieStorage = Cookies::getCookieStorage('sv_session');
+
+            if(
+                $CookieStorage->Data['last_error_code'] == DynamicalWeb::activeRequestHandler()->getParameters()['std_error'] &&
+                isset($CookieStorage->Data['last_error_message']) &&
+                isset($CookieStorage->Data['last_error_code']) &&
+                isset($CookieStorage->Data['last_error_name'])
+            )
+            {
+                $additional_details = '<br/><code>' . $CookieStorage->Data['last_error_message'] . ' (' . $CookieStorage->Data['last_error_name'] . ' ' . $CookieStorage->Data['last_error_code'] . ')</code>';
+            }
+        }
+
+        switch(strtolower(DynamicalWeb::activeRequestHandler()->getParameters()['callback']))
+        {
+            case 'auth_100':
+                renderAlert('danger', 'There was an error while trying to process your request' . $additional_details);
+                break;
+
+            case 'auth_101':
+                renderAlert('danger', 'You cannot register an account while authenticated' . $additional_details);
+                break;
+
+            case 'auth_102':
+                renderAlert('danger', 'The given first name is invalid' . $additional_details);
+                break;
+
+            case 'auth_103':
+                renderAlert('danger', 'The given last name is invalid' . $additional_details);
+                break;
+
+            case 'auth_104':
+                renderAlert('danger', 'The given password is invalid or considered unsecured' . $additional_details);
+                break;
+
+            case 'auth_105':
+                renderAlert('danger', 'The given username is invalid' . $additional_details);
+                break;
+
+            case 'auth_106':
+                renderAlert('danger', 'The given username already exists' . $additional_details);
+                break;
+
+            case 'auth_107':
+                renderAlert('danger', 'You must agree to the terms of service & community guidelines to register an account on the network');
+                break;
+
+            case 'auth_108':
+                renderAlert('success', 'You\'ve successfully registered an account, welcome to Socialvoid!.');
+                break;
+        }
+    }

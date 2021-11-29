@@ -27,7 +27,8 @@
     },
     "runtime_scripts": [
         {"event": "pre_request", "script": "scripts/client.dyn"},
-        {"event": "pre_request", "script": "scripts/session.dyn"}
+        {"event": "pre_request", "script": "scripts/session.dyn"},
+        {"event": "pre_request", "script": "scripts/render_alert.dyn"}
     ],
     "web_assets": [
         {"type": "ppm", "name": "app_assets", "source": "net.intellivoid.socialvoid_web_assets==latest", "path": "app/assets"}

@@ -23,7 +23,7 @@
         if(function_exists('getNetworkSession') == false)
         {
             /**
-             * Returns a constructed network session instance (Memory efficent)
+             * Returns a constructed network session instance (Memory efficient)
              *
              * @return NetworkSession
              */

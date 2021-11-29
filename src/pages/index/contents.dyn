@@ -27,13 +27,12 @@
                                     </ol>
                                 </div>
                             </div>
-
+                            <?PHP HTML::importSection('callbacks/authentication_callbacks'); ?>
                         </div>
                     </div>
 
                     <div class="page-content-wrapper">
                         <div class="container-fluid">
-                            <?PHP //HTML::importScript("callbacks"); ?>
                             <div class="row">
                                 <div class="col-xl-4">
                                     <?PHP

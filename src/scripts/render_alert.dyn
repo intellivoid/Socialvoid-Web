@@ -1,0 +1,10 @@
+<?php
+
+    function renderAlert(string $type, string $message)
+    {
+        ?>
+        <div class="alert alert-<?PHP \DynamicalWeb\Html::print($type); ?> fade show mb-0" role="alert">
+            <?PHP \DynamicalWeb\Html::print($message, false); ?>
+        </div>
+        <?php
+    }

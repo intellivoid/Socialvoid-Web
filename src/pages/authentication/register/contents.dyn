@@ -3,6 +3,12 @@
     use DynamicalWeb\Cookies;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Exceptions\CookieStorageNotFoundException;
+use SocialvoidLib\Exceptions\Standard\Authentication\AlreadyAuthenticatedException;
+use SocialvoidLib\Exceptions\Standard\Validation\InvalidFirstNameException;
+use SocialvoidLib\Exceptions\Standard\Validation\InvalidLastNameException;
+use SocialvoidLib\Exceptions\Standard\Validation\InvalidPasswordException;
+use SocialvoidLib\Exceptions\Standard\Validation\InvalidUsernameException;
+use SocialvoidLib\Exceptions\Standard\Validation\UsernameAlreadyExistsException;
 
     $active_request_handler = DynamicalWeb::activeRequestHandler();
 
@@ -10,7 +16,34 @@
     {
         // Don't authenticate if the user is already authenticated
         $active_request_handler->Redirect = true;
-        $active_request_handler->RedirectLocation = DynamicalWeb::getRoute('index');
+        $active_request_handler->RedirectLocation = DynamicalWeb::getRoute('index', ['callback' => 'auth_101']);
+        DynamicalWeb::activeRequestHandler($active_request_handler);
+        return;
+    }
+
+    $required_parameters = [
+        'register_first_name',
+        'register_username',
+        'register_password',
+        'register_captcha_answer',
+        'register_agree'
+    ];
+
+    foreach($required_parameters as $parameter)
+    {
+        if(isset($active_request_handler->getParameters()[$parameter]) == false)
+        {
+            $active_request_handler->Redirect = true;
+            $active_request_handler->RedirectLocation = DynamicalWeb::getRoute('index', ['callback' => 'auth_100', 'mp' => $parameter]);
+            DynamicalWeb::activeRequestHandler($active_request_handler);
+            return;
+        }
+    }
+
+    if($active_request_handler->getParameters()['register_agree'] !== '1' && $active_request_handler->getParameters()['register_agree'] !== 'on')
+    {
+        $active_request_handler->Redirect = true;
+        $active_request_handler->RedirectLocation = DynamicalWeb::getRoute('index', ['callback' => 'auth_107', 'mp' => 'register_agree']);
         DynamicalWeb::activeRequestHandler($active_request_handler);
         return;
     }
@@ -28,29 +61,54 @@
     }
 
     $networkSession = getNetworkSession();
-
-    if(WEB_SESSION_ACTIVE == true)
+    try
     {
-        /** @var sws $sws */
-        $sws = DynamicalWeb::getMemoryObject('sws');
-        $Cookie = $sws->WebManager()->getCookie('socialvoid_session');
-
-        $Cookie->Data["session_active"] = false;
-        $Cookie->Data["user_id"] = null;
-        $Cookie->Data["user_public_id"] = null;
-        $Cookie->Data["user_username"] = null;
-        $Cookie->Data["user_username_safe"] = null;
-        $Cookie->Data["session"] = null;
-        $Cookie->Data["session_id"] = null;
-        $Cookie->Data["session_public_id"] = null;
-        $Cookie->Data["verification_required"] = false;
-        $Cookie->Data["auto_logout"] = 0;
-
-        $sws->CookieManager()->updateCookie($Cookie);
-        $sws->WebManager()->disposeCookie('socialvoid_lib');
+        $Peer = $networkSession->registerUser(
+            $active_request_handler->getParameters()['register_username'],
+            $active_request_handler->getParameters()['register_password'],
+            $active_request_handler->getParameters()['register_first_name'],
+            ($active_request_handler->getParameters()['register_last_name'] ?? null)
+        );
+    }
+    catch (AlreadyAuthenticatedException $e)
+    {
+        handleStandardError('index', 'auth_101', $CookieStorage, $e);
+        return;
+    }
+    catch (InvalidFirstNameException $e)
+    {
+        handleStandardError('index', 'auth_102', $CookieStorage, $e);
+        return;
+    }
+    catch (InvalidLastNameException $e)
+    {
+        handleStandardError('index', 'auth_103', $CookieStorage, $e);
+        return;
+    }
+    catch (InvalidPasswordException $e)
+    {
+        handleStandardError('index', 'auth_104', $CookieStorage, $e);
+        return;
+    }
+    catch (InvalidUsernameException $e)
+    {
+        handleStandardError('index', 'auth_105', $CookieStorage, $e);
+        return;
+    }
+    catch (UsernameAlreadyExistsException $e)
+    {
+        handleStandardError('index', 'auth_106', $CookieStorage, $e);
+        return;
     }
 
+    /** @noinspection PhpUnhandledExceptionInspection */
+    $CookieStorage = Cookies::getCookieStorage('sv_session');
+    $CookieStorage->Data['authenticated'] = true;
+    $CookieStorage->Data['authenticated_peer_id'] = $Peer->ID;
+    $CookieStorage->Data['authenticated_peer_username'] = $Peer->Username;
+    Cookies::updateCookieStorage($CookieStorage);
 
-    $GetParameters = $_GET;
-    unset($GetParameters['callback']);
-    Actions::redirect(DynamicalWeb::getRoute("authentication/login", $GetParameters));
+    $active_request_handler->Redirect = true;
+    $active_request_handler->RedirectLocation = DynamicalWeb::getRoute('index', ['callback' => 'auth_108']);
+    DynamicalWeb::activeRequestHandler($active_request_handler);
+    return;
