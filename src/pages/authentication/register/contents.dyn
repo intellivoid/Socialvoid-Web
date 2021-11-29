@@ -28,7 +28,6 @@
     }
 
     $networkSession = getNetworkSession();
-    $networkSession->se
 
     if(WEB_SESSION_ACTIVE == true)
     {

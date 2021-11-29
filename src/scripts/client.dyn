@@ -20,16 +20,6 @@
         if(DynamicalWeb::getMemoryObject('network_session') == null)
             DynamicalWeb::setMemoryObject('network_session',  new NetworkSession(DynamicalWeb::getMemoryObject('socialvoid_instance')));
 
-        if(DynamicalWeb::getMemoryObject('session_identification') == null)
-        {
-            $SessionIdentification = new SessionIdentification();
-            $SessionIdentification->ChallengeAnswer = Crypto::getCode(SV_SESSION_CHALLENGE);
-            $SessionIdentification->ClientPublicHash = SV_CLIENT_PUBLIC_HASH;
-            $SessionIdentification->SessionID = SV_SESSION_ID;
-
-            DynamicalWeb::setMemoryObject('session_identification', $SessionIdentification);
-        }
-
         if(function_exists('getNetworkSession') == false)
         {
             /**
@@ -53,19 +43,6 @@
             function getSocialvoid(): SocialvoidLib
             {
                 return DynamicalWeb::getMemoryObject('socialvoid_instance');
-            }
-        }
-
-        if(function_exists('getSessionIdentification') == false)
-        {
-            /**
-             * Returns the session identification object constructed by the client
-             *
-             * @return SessionIdentification
-             */
-            function getSessionIdentification(): SessionIdentification
-            {
-                return DynamicalWeb::getMemoryObject('session_identification');
             }
         }
     }

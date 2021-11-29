@@ -4,10 +4,23 @@
     use DynamicalWeb\Cookies;
     use DynamicalWeb\DynamicalWeb;
     use DynamicalWeb\Exceptions\CookieStorageNotFoundException;
+    use DynamicalWeb\Exceptions\StorageDriverException;
     use DynamicalWeb\Objects\Cookie;
+    use DynamicalWeb\Objects\CookieStorage;
+    use SocialvoidLib\Exceptions\Standard\Authentication\SessionExpiredException;
+    use SocialvoidLib\Exceptions\Standard\Authentication\SessionNotFoundException;
+    use SocialvoidLib\Exceptions\Standard\Server\InternalServerException;
+    use SocialvoidLib\Exceptions\Standard\Validation\InvalidClientNameException;
+    use SocialvoidLib\Exceptions\Standard\Validation\InvalidClientPrivateHashException;
+    use SocialvoidLib\Exceptions\Standard\Validation\InvalidClientPublicHashException;
+    use SocialvoidLib\Exceptions\Standard\Validation\InvalidPlatformException;
+    use SocialvoidLib\Exceptions\Standard\Validation\InvalidVersionException;
     use SocialvoidLib\InputTypes\SessionClient;
+    use SocialvoidLib\Objects\Standard\SessionIdentification;
+    use tsa\Classes\Crypto;
 
     // Only execute for page requests
+    /** @noinspection PhpUnhandledExceptionInspection */
     if(DynamicalWeb::activeRequestHandler()->ResourceSource == ResourceSource::Page && defined('SV_CLIENT_INITIALIZED') == false)
     {
         define('SV_CLIENT_INITIALIZED', true);
@@ -17,14 +30,67 @@
         define('SV_CLIENT_PUBLIC_HASH', hash('sha256', 'SocialvoidWebClient:DynamicalWeb'));
         define('SV_CLIENT_PRIVATE_HASH', hash('sha256', 'SocialvoidWebClient:DynamicalWeb:' . SV_CLIENT_PUBLIC_HASH));
 
+        if(function_exists('getSessionClient') == false)
+        {
+            /**
+             * Returns a constructed session client object
+             *
+             * @return SessionClient
+             */
+            function getSessionClient(): SessionClient
+            {
+                if(DynamicalWeb::getMemoryObject('session_client') == null)
+                {
+                    $SessionClient = new SessionClient();
+
+                    $SessionClient->Name = SV_CLIENT_NAME;
+                    $SessionClient->Version = SV_CLIENT_VERSION;
+                    $SessionClient->Platform = SV_CLIENT_PLATFORM;
+                    $SessionClient->PublicHash = SV_CLIENT_PUBLIC_HASH;
+                    $SessionClient->PrivateHash = SV_CLIENT_PRIVATE_HASH;
+
+                    DynamicalWeb::setMemoryObject('session_client', $SessionClient);
+                }
+
+                return DynamicalWeb::getMemoryObject('session_client');
+            }
+        }
+
+        if(function_exists('establishNewSession') == false)
+        {
+            /**
+             * Establishes a new session
+             *
+             * @param CookieStorage $cookieStorage
+             * @throws StorageDriverException
+             * @throws InternalServerException
+             * @throws InvalidClientNameException
+             * @throws InvalidClientPrivateHashException
+             * @throws InvalidClientPublicHashException
+             * @throws InvalidPlatformException
+             * @throws InvalidVersionException
+             */
+            function establishNewSession(CookieStorage &$cookieStorage)
+            {
+                $SessionEstablished = getNetworkSession()->createSession(getSessionClient(), DYNAMICAL_CLIENT_IP_ADDRESS);
+
+                $cookieStorage->Data['session_established'] = true;
+                $cookieStorage->Data['session_id'] = $SessionEstablished->ID;
+                $cookieStorage->Data['session_challenge'] = $SessionEstablished->Challenge;
+                Cookies::updateCookieStorage($cookieStorage);
+            }
+        }
+
         try
         {
+            /** @noinspection PhpUnhandledExceptionInspection */
             $CookieStorage = Cookies::getCookieStorage('sv_session');
         }
         catch (CookieStorageNotFoundException $e)
         {
             // Create a new storage session if it doesn't exist.
             $Cookie = new Cookie('sv_session');
+            /** @noinspection PhpUnhandledExceptionInspection */
             $CookieStorage = Cookies::createCookieStorage($Cookie, false);
 
             // Set the default parameters for the session
@@ -34,26 +100,35 @@
             $CookieStorage->Data['session_challenge'] = null;
 
             // Finalize the construction
+            /** @noinspection PhpUnhandledExceptionInspection */
             Cookies::updateCookieStorage($CookieStorage);
         }
 
         // Finally, establish a session if not already established
         if($CookieStorage->Data['session_established'] == false)
         {
-            $SessionClient = new SessionClient();
+            /** @noinspection PhpUnhandledExceptionInspection */
+            establishNewSession($CookieStorage);
+        }
 
-            $SessionClient->Name = SV_CLIENT_NAME;
-            $SessionClient->Version = SV_CLIENT_VERSION;
-            $SessionClient->Platform = SV_CLIENT_PLATFORM;
-            $SessionClient->PublicHash = SV_CLIENT_PUBLIC_HASH;
-            $SessionClient->PrivateHash = SV_CLIENT_PRIVATE_HASH;
+        $SessionIdentification = new SessionIdentification();
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $SessionIdentification->ChallengeAnswer = Crypto::getCode(SV_SESSION_CHALLENGE);
+        $SessionIdentification->ClientPublicHash = SV_CLIENT_PUBLIC_HASH;
+        $SessionIdentification->SessionID = SV_SESSION_ID;
 
-            $SessionEstablished = getNetworkSession()->createSession($SessionClient, DYNAMICAL_CLIENT_IP_ADDRESS);
+        try
+        {
+            /** @noinspection PhpUnhandledExceptionInspection */
+            getNetworkSession()->loadSession($SessionIdentification);
+        }
+        catch (SessionExpiredException | SessionNotFoundException $e)
+        {
+            /** @noinspection PhpUnhandledExceptionInspection */
+            establishNewSession($CookieStorage);
 
-            $CookieStorage->Data['session_established'] = true;
-            $CookieStorage->Data['session_id'] = $SessionEstablished->ID;
-            $CookieStorage->Data['session_challenge'] = $SessionEstablished->Challenge;
-            Cookies::updateCookieStorage($CookieStorage);
+            /** @noinspection PhpUnhandledExceptionInspection */
+            getNetworkSession()->loadSession($SessionIdentification);
         }
 
         define('SV_AUTHENTICATED', $CookieStorage->Data['authenticated']);
