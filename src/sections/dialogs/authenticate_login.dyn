@@ -1,3 +1,8 @@
+<?php
+    use DynamicalWeb\DynamicalWeb;
+    use DynamicalWeb\Html;
+?>
+
 <div class="modal fade authenticate_login_dialog" tabindex="-1" id="authenticate_login_dialog" role="dialog" aria-labelledby="authenticate_login_dialog" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -10,13 +15,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="<?PHP \DynamicalWeb\Html::print(\DynamicalWeb\DynamicalWeb::getRoute('authentication/login')); ?>">
+                <form method="POST" action="<?PHP Html::print(DynamicalWeb::getRoute('authentication/login')); ?>">
                     <div class="form-group mb-4">
-                        <h5 class="font-size-14 text-left">Username</h5>
+                        <h5 class="font-size-14 text-left">
+                            Username <span class="text-danger">*</span>
+                        </h5>
                         <input class="form-control" type="text" placeholder="Username" id="login_username" name="login_username" autocomplete="username" required>
                     </div>
                     <div class="form-group mb-4">
-                        <h5 class="font-size-14 text-left">Password</h5>
+                        <h5 class="font-size-14 text-left">
+                            Password <span class="text-danger">*</span>
+                        </h5>
                         <input class="form-control" type="password" placeholder="Password" id="login_password" name="login_password" autocomplete="password" required>
                     </div>
                     <div class="form-group mb-4">
@@ -24,19 +33,16 @@
                         <input class="form-control" type="text" placeholder="Two-Factor Authentication Code" id="login_two_factor_code" name="login_two_factor_code" autocomplete="off">
                     </div>
                     <div class="form-group mb-4">
+                        <h5 class="font-size-14 text-left">
+                            Captcha <span class="text-danger">*</span>
+                        </h5>
                         <img alt="Loading Captcha" id="login_captcha" class="img-fluid rounded px-5 mb-3" src="#">
                         <div class="input-group mt-sm-0 mr-sm-3">
-                            <input type="text" class="form-control" id="login_captcha_answer" placeholder="Captcha" required>
+                            <input type="text" class="form-control" id="login_captcha_answer" name="login_captcha_answer" placeholder="Captcha" required>
                             <button class="input-group-append btn btn-light" id="login_reload_captcha" name="login_reload_captcha">
                                 <i class="fa fa-sync pt-1"></i>
                             </button>
                         </div>
-                    </div>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="" id="login_">
-                        <label class="form-check-label" for="defaultCheck1">
-                            I accept <a href="#" class="text-primary">Terms and Conditions</a> and have read the <a href="#" class="text-primary">Community Guidelines</a>
-                        </label>
                     </div>
                     <div class="mt-4">
                         <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">Login</button>

@@ -35,10 +35,10 @@
     ],
     "router": [
         {"method": ["GET"], "path": "", "page": "index", "params": []},
+
         {"method": ["GET"], "path": "terms", "page": "legal/terms_of_service", "params": []},
         {"method": ["GET"], "path": "privacy", "page": "legal/privacy_policy", "params": []},
         {"method": ["GET"], "path": "network/captcha", "page": "network_handler/get_captcha", "params": []},
-
         {"method": ["POST"], "path": "auth/sv/login", "page": "authentication/login", "params": []},
         {"method": ["GET", "POST"], "path": "auth/sv/logout", "page": "authentication/logout", "params": []},
         {"method": ["POST"], "path": "auth/sv/register", "page": "authentication/register", "params": []}

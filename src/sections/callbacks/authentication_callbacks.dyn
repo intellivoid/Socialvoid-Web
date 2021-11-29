@@ -57,7 +57,35 @@
                 break;
 
             case 'auth_108':
-                renderAlert('success', 'You\'ve successfully registered an account, welcome to Socialvoid!.');
+                renderAlert('success', 'You\'ve successfully registered an account, welcome to Socialvoid!');
+                break;
+
+            case 'auth_109':
+                renderAlert('danger', 'You cannot login while being already authenticated' . $additional_details);
+                break;
+
+            case 'auth_110':
+                renderAlert('danger', 'The given username or password is incorrect' . $additional_details);
+                break;
+
+            case 'auth_111':
+                renderAlert('danger', 'A two-factor authentication code is required for this account' . $additional_details);
+                break;
+
+            case 'auth_112':
+                renderAlert('danger', 'The given two-factor authentication code is incorrect' . $additional_details);
+                break;
+
+            case 'auth_113':
+                renderAlert('danger', 'This account cannot be authenticated using a password' . $additional_details);
+                break;
+
+            case 'auth_114':
+                renderAlert('danger', 'This account cannot be authenticated using a password, this web client does not support accounts with private access tokens.' . $additional_details);
+                break;
+
+            case 'auth_115':
+                renderAlert('danger', 'There was an error during the authentication process' . $additional_details);
                 break;
         }
     }
